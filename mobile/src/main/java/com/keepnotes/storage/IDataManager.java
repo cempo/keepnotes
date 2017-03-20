@@ -9,4 +9,6 @@ public interface IDataManager {
     ArrayList<Note> getNotes();
 
     void setNotes(ArrayList<Note> notes);
+
+    void removeNote();
 }

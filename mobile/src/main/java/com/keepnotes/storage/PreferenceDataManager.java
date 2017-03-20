@@ -37,4 +37,9 @@ public class PreferenceDataManager implements IDataManager {
     public void setNotes(ArrayList<Note> notes) {
         manager.edit().putString(NOTES, GsonWrapper.getGson().toJson(notes)).apply();
     }
+
+    @Override
+    public void removeNote() {
+        // TODO
+    }
 }

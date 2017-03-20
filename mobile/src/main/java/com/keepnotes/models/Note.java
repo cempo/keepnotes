@@ -8,10 +8,10 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class Note implements Parcelable {
-    public long id;
-    public String title;
-    public String description;
-    public boolean isDone;
+    private long id;
+    private String title;
+    private String description;
+    private boolean isDone;
 
     public Note() {
     }
@@ -81,5 +81,27 @@ public class Note implements Parcelable {
     public static Type getListTokenType() {
         return new TypeToken<List<Note>>() {
         }.getType();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Note note = (Note) o;
+
+        if (id != note.id) return false;
+        if (isDone != note.isDone) return false;
+        if (title != null ? !title.equals(note.title) : note.title != null) return false;
+        return description != null ? description.equals(note.description) : note.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (isDone ? 1 : 0);
+        return result;
     }
 }
