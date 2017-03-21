@@ -7,14 +7,14 @@ public class App extends android.app.Application {
 
 
     private static App instance;
-    private static IDataManager dataManager;
+    //private static IDataManager dataManager;
 
-    public static IDataManager getDataManager() {
+    /*public static IDataManager getDataManager() {
         if (dataManager == null) {
             dataManager = new PreferenceDataManager();
         }
         return dataManager;
-    }
+    }*/
 
     public static App getInstance() {
         return instance;

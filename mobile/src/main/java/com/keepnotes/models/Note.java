@@ -16,6 +16,13 @@ public class Note implements Parcelable {
     public Note() {
     }
 
+    public Note(long id, String title, String description, boolean isDone) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.isDone = isDone;
+    }
+
     public long getId() {
         return id;
     }
@@ -90,18 +97,12 @@ public class Note implements Parcelable {
 
         Note note = (Note) o;
 
-        if (id != note.id) return false;
-        if (isDone != note.isDone) return false;
-        if (title != null ? !title.equals(note.title) : note.title != null) return false;
-        return description != null ? description.equals(note.description) : note.description == null;
+        return id == note.id;
+
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (isDone ? 1 : 0);
-        return result;
+        return (int) (id ^ (id >>> 32));
     }
 }

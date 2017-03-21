@@ -21,6 +21,14 @@ public class DetailViewModel {
     }
 
     public void removeNote() {
-        manager.removeNote();
+        manager.removeNote(note);
+    }
+
+    public void saveNote() {
+        manager.saveNote(note);
+    }
+
+    public void changeStatus(boolean done) {
+        manager.changeNoteStatus(note, done);
     }
 }
