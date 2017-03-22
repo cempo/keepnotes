@@ -31,14 +31,14 @@ public class PreferenceDataManager implements IDataManager {
 
     @Override
     public void setNotes(ArrayList<Note> notes) {
-        //manager.edit().putString(NOTES, GsonWrapper.getGson().toJson(notes)).apply();
+        manager.edit().putString(NOTES, GsonWrapper.getGson().toJson(notes)).apply();
     }
 
     @Override
     public void removeNote(Note note) {
-        /*ArrayList<Note> notes = getNotes();
+        ArrayList<Note> notes = getNotes();
         notes.remove(note);
-        setNotes(notes);*/
+        setNotes(notes);
     }
 
     @Override
