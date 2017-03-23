@@ -14,5 +14,5 @@ public interface IDataManager {
 
     void saveNote(Note note);
 
-    void changeNoteStatus(Note note, boolean done);
+    void changeNoteStatus(Note note);
 }

@@ -55,6 +55,6 @@ public class DetailViewModelTest {
     @Test
     public void Note_DoneNote_NoteBecameDone() {
         detailViewModel.changeStatus(note.isDone());
-        Mockito.verify(manager).changeNoteStatus(note, note.isDone());
+        Mockito.verify(manager).changeNoteStatus(note);
     }
 }

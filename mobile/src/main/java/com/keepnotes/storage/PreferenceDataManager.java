@@ -1,6 +1,8 @@
 package com.keepnotes.storage;
 
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import com.keepnotes.App;
 import com.keepnotes.models.Note;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class PreferenceDataManager implements IDataManager {
     private SharedPreferences manager;
 
     /*public PreferenceDataManager() {
-        manager = PreferenceManager.getDefaultSharedPreferences(App.getInstance());
+        this(PreferenceManager.getDefaultSharedPreferences(App.getInstance()));
     }*/
 
     public PreferenceDataManager(SharedPreferences sharedPreferences) {
@@ -43,25 +45,24 @@ public class PreferenceDataManager implements IDataManager {
 
     @Override
     public void saveNote(Note note) {
-       /* ArrayList<Note> notes = getNotes();
+        ArrayList<Note> notes = getNotes();
         int index = notes.indexOf(note);
         if (index != -1) {
             notes.set(index, note);
         } else {
             notes.add(note);
         }
-        setNotes(notes);*/
+        setNotes(notes);
     }
 
     @Override
-    public void changeNoteStatus(Note note, boolean done) {
-        /*ArrayList<Note> notes = getNotes();
+    public void changeNoteStatus(Note note) {
+        ArrayList<Note> notes = getNotes();
         int index = notes.indexOf(note);
         if (index != -1) {
-            Note storedNote = notes.get(index);
-            storedNote.setDone(done);
+            notes.set(index, note);
             setNotes(notes);
-        }*/
+        }
 
     }
 }

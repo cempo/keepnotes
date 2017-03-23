@@ -29,6 +29,6 @@ public class DetailViewModel {
     }
 
     public void changeStatus(boolean done) {
-        manager.changeNoteStatus(note, done);
+        manager.changeNoteStatus(note);
     }
 }
