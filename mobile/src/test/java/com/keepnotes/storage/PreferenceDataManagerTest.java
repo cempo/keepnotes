@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import com.keepnotes.models.Note;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,9 @@ import static org.mockito.ArgumentMatchers.eq;
 
 public class PreferenceDataManagerTest {
     private PreferenceDataManager manager;
+    @Mock
     private SharedPreferences sharedPrefs;
+    @Mock
     private SharedPreferences.Editor editor;
     //private Context context;
     private Gson gson;
@@ -23,13 +27,12 @@ public class PreferenceDataManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        //context = Mockito.mock(Context.class);
-        sharedPrefs = Mockito.mock(SharedPreferences.class);
-        editor = Mockito.mock(SharedPreferences.Editor.class);
+        MockitoAnnotations.initMocks(this);
+
         Mockito.when(sharedPrefs.edit()).thenReturn(editor);
         Mockito.when(editor.putString(anyString(), anyString())).thenReturn(editor);
 
-        gson = GsonWrapper.getGson();
+        gson = GsonWrapper.INSTANCE.getGson();
         manager = new PreferenceDataManager(sharedPrefs);
 
         NOTE_LIST = new ArrayList<>();
@@ -142,20 +145,20 @@ public class PreferenceDataManagerTest {
     }
 
     private void mockGetNotes(String stringList) {
-        Mockito.when(sharedPrefs.getString(PreferenceDataManager.NOTES, eq(anyString())))
+        Mockito.when(sharedPrefs.getString(PreferenceDataManager.Companion.getNOTES(), eq(anyString())))
                 .thenReturn(stringList);
     }
 
     private void checkThatSetNotes(ArrayList<Note> notes) {
-        Mockito.verify(editor).putString(PreferenceDataManager.NOTES, getStringFromNotes(notes));
+        Mockito.verify(editor).putString(PreferenceDataManager.Companion.getNOTES(), getStringFromNotes(notes));
     }
 
     private void checkThatNeverSetNotes() {
-        Mockito.verify(editor, Mockito.never()).putString(PreferenceDataManager.NOTES, eq(anyString()));
+        Mockito.verify(editor, Mockito.never()).putString(PreferenceDataManager.Companion.getNOTES(), eq(anyString()));
     }
 
     private void checkThatGetNotes() {
-        Mockito.verify(sharedPrefs).getString(PreferenceDataManager.NOTES, eq(anyString()));
+        Mockito.verify(sharedPrefs).getString(PreferenceDataManager.Companion.getNOTES(), eq(anyString()));
     }
 
     private void checkThatPrefsApplied() {

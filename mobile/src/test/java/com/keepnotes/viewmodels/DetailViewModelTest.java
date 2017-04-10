@@ -6,13 +6,16 @@ import com.keepnotes.storage.IDataManager;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.core.Is.*;
 import static org.junit.Assert.*;
 
 
 public class DetailViewModelTest {
+    @Mock
     private IDataManager manager;
     private Note note;
     private DetailViewModel detailViewModel;
@@ -20,7 +23,7 @@ public class DetailViewModelTest {
 
     @Before
     public void setUp() throws Exception {
-        manager = Mockito.mock(IDataManager.class);
+        MockitoAnnotations.initMocks(this);
 
         note = new Note();
         note.setTitle("The Note");

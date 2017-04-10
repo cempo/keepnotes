@@ -4,13 +4,16 @@ import com.keepnotes.models.Note;
 import com.keepnotes.storage.IDataManager;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
 public class MainViewModelTest {
+    @Mock
     private IDataManager manager;
     private MainViewModel mainViewModel;
     private ArrayList<Note> notes;
@@ -20,7 +23,8 @@ public class MainViewModelTest {
 
     @Before
     public void setUp() {
-        manager = Mockito.mock(IDataManager.class);
+        MockitoAnnotations.initMocks(this);
+
         mainViewModel = new MainViewModel(manager);
 
         notes = new ArrayList<>();

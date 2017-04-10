@@ -23,18 +23,18 @@ public class ValidationUtilsTest {
     @Test
     public void NoteTitle_ValidateLengthNoteTitle_ValidLengthNoteTitle() {
         String title = note.getTitle();
-        assertTrue(ValidationUtils.isValidTitleLength(title));
+        assertTrue(ValidationUtils.INSTANCE.isValidTitleLength(title));
     }
 
     @Test
     public void NoteTitle_ValidateSymbolsNoteTitle_ValidSymbolsNoteTitle() {
         String title = note.getTitle();
-        assertTrue(ValidationUtils.isValidTitleSymbols(title));
+        assertTrue(ValidationUtils.INSTANCE.isValidTitleSymbols(title));
     }
 
     @Test
     public void NoteDescription_ValidateLengthNoteDescription_ValidLengthNoteDescription() {
         String description = note.getDescription();
-        assertTrue(ValidationUtils.isValidDescriptionLength(description));
+        assertTrue(ValidationUtils.INSTANCE.isValidDescriptionLength(description));
     }
 }
