@@ -5,5 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.keepnotes.ui.DetailActivity">
-    <include layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/toolbar_include"
+        layout="@layout/toolbar"/>
 </LinearLayout>

@@ -11,6 +11,8 @@ import android.view.View
 import android.view.Menu
 import android.view.MenuItem
 import com.keepnotes.R
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,10 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar_include.toolbar)
 
-        val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
